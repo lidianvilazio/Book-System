@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20180503143022) do
   create_table "books", force: :cascade do |t|
     t.string "author"
     t.string "title"
+    t.string "subtitle"
+    t.string "publisher"
+    t.string "publishedDate"
+    t.string "description"
+    t.string "pageCount"
+    t.string "categories"
+    t.string "imageLinks"
+    t.string "language"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
