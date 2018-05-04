@@ -15,7 +15,7 @@ class Book < ApplicationRecord
         v.each do |i|
           title = i['volumeInfo']['title']
           subtitle = i['volumeInfo']['subtitle']
-          author = ''
+          author = nil
           publisher = i['volumeInfo']['publisher']
           publishedDate = i['volumeInfo']['publishedDate']
           description = i['volumeInfo']['description']

@@ -4,7 +4,7 @@ class User extends React.Component {
 
   render() {
     return(
-      <div>User</div>
+      <div><h2>User</h2></div>
     )
   }
 

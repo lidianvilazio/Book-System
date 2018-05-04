@@ -23,7 +23,7 @@ class Books extends React.Component {
   render() {
     console.log(this.state.allBooks);
     return(
-      <div>Books</div>
+      <div><h2>Books</h2></div>
     )
   }
 
