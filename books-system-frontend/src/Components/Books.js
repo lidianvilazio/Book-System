@@ -13,7 +13,7 @@ class Books extends React.Component {
   fetchBooks = () => {
     fetch(url)
     .then(r => r.json())
-    .then(console.log)
+    .then(json => this.setState({allBooks: json}))
   }
 
   componentDidMount() {
@@ -22,8 +22,14 @@ class Books extends React.Component {
 
   render() {
     console.log(this.state.allBooks);
+    const books = this.state.allBooks.map(book => {
+      return <p>{book.title}</p>
+    })
     return(
-      <div><h2>Books</h2></div>
+      <div>
+        <h2>Books</h2>
+        {books}
+      </div>
     )
   }
 

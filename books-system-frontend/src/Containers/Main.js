@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import NavBar from '../Components/NavBar';
 import Login from '../Components/Login'
+import SignUp from '../Components/SignUp'
 
 class Main extends React.Component {
 
@@ -21,6 +22,7 @@ class Main extends React.Component {
         <Route exact path="/books" component={Books} />
         <Route exact path="/user" component={User} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={SignUp} />
       </div>
     </Router>
   );
