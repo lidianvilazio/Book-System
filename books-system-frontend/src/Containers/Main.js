@@ -7,6 +7,7 @@ import {
   Route
 } from 'react-router-dom';
 import NavBar from '../Components/NavBar';
+import Login from '../Components/Login'
 
 class Main extends React.Component {
 
@@ -19,6 +20,7 @@ class Main extends React.Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/books" component={Books} />
         <Route exact path="/user" component={User} />
+        <Route exact path="/login" component={Login} />
       </div>
     </Router>
   );
