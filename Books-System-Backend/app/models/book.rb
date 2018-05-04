@@ -15,7 +15,7 @@ class Book < ApplicationRecord
         v.each do |i|
           title = i['volumeInfo']['title']
           subtitle = i['volumeInfo']['subtitle']
-          author = i['volumeInfo']['authors']
+          author = ''
           publisher = i['volumeInfo']['publisher']
           publishedDate = i['volumeInfo']['publishedDate']
           description = i['volumeInfo']['description']
@@ -23,21 +23,13 @@ class Book < ApplicationRecord
           categories = i['volumeInfo']['categories']
           imageLinks = i['volumeInfo']['imageLinks']
           language = i['volumeInfo']['language']
-          # title = ''
-          # author = ''
-          # i.each do |k1,v1|
-          #   if k1 == 'volumeInfo'
-          #     v1.each do |k2,v2|
-          #       if k2 == "title"
-          #         title = v2
-          #       end
-          #       if k2 == 'author' || k2 == "authors"
-          #         author = v2
-          #       end
-                Book.create({author: author, title: title, subtitle: subtitle, publisher: publisher, publishedDate: publishedDate, description: description, pageCount: pageCount, categories: categories, imageLinks: imageLinks, language: language})
-              end
+          i['volumeInfo'].each do |k1, v1|
+            if k1 == 'authors' || k1 == 'author'
+              author = v1
             end
           end
+
+          Book.create({author: author, title: title, subtitle: subtitle, publisher: publisher, publishedDate: publishedDate, description: description, pageCount: pageCount, categories: categories, imageLinks: imageLinks, language: language})
         end
       end
     end
