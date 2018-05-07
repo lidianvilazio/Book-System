@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import Home from './Home'
 
 
+class Login extends React.Component{
+
   DEFAULT_STATE = {
     username: "",
     password: "",
