@@ -33,8 +33,6 @@ class Login extends React.Component {
         } else {
           this.setState({ ...this.DEFAULT_STATE })
           this.props.authSet(json)
-          // this.props.history.push("/")
-          // console.log(this.props.history.location.pathname);
         }
       })
   }
