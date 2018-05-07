@@ -12,11 +12,12 @@ import SignUp from '../Components/SignUp'
 
 class Main extends React.Component {
 
-
+// flex-xl-nowrap
+// className='row'
   render() {
     return (
     <Router>
-      <div>
+    <div >
         <NavBar/>
         <Route exact path="/" component={Home} />
         <Route exact path="/books" component={Books} />

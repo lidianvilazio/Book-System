@@ -5,7 +5,7 @@ import Main from './Containers/Main'
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="App container-fluid">
         <Main/>
       </div>
     );

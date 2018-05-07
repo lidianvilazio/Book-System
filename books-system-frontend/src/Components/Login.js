@@ -16,13 +16,22 @@ class Login extends React.Component {
   // <button type="submit" className="btn btn-success btn-block" onSubmit={this.handleSubmit} value="Submit">Submit</button>
   // </form>
 
-  state = {
+  DEFAULT_STATE = {
     username: "",
-    password: ""
+    password: "",
+    errors: ''
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault()
+  state = this.DEFAULT_STATE
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { username, password } = this.state;
+    const auth = { username, password };
+    this.doFetch(auth)
+  }
+
+  doFetch(auth) {
     console.log("HELLO!!!!")
     fetch("http://localhost:3000/sessions", {
       headers: {
@@ -30,11 +39,21 @@ class Login extends React.Component {
         "Accept": "application/javascript"
       },
       method: "POST",
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password
+      body: JSON.stringify(auth)
+    }).then(r => r.json()).then((json) => {
+        if (json.error) {
+          this.setState({ errors: json.error })
+        } else {
+          this.setState({ ...this.DEFAULT_STATE })
+          this.authSet(json)
+          // this.props.history.push("/")
+        }
       })
-    }).then(r => r.json()).then(console.log)
+  }
+
+  authSet = (auth) =>{
+    localStorage.auth = JSON.stringify(auth);
+    this.setState({ auth });
   }
 
   handleChange = (e) => {
@@ -46,31 +65,28 @@ class Login extends React.Component {
 
 
 render(){
-  console.log("username"+this.state.username, "pw"+this.state.password)
   return(
-    <div className="col-md-6 mb-4">
-                    <div className="card">
-                        <div className="card-body">
-                            <h3 className="text-center default-text py-3"><i className="fa fa-lock"></i> Login:</h3>
-
-                            <div className="md-form">
-                                <i className="fa fa-envelope prefix grey-text"></i>
-                                <input type="text" id="username" className="form-control" value={this.state.username} name="username" onChange={this.handleChange}/>
-                                <label for="defaultForm-email">Your Username</label>
-                            </div>
-
-                            <div className="md-form">
-                                <i className="fa fa-lock prefix grey-text"></i>
-                                <input type="password" id="password" className="form-control" value={this.state.password} name="password"onChange={this.handleChange}/>
-                                <label for="defaultForm-pass">Your password</label>
-                            </div>
-                            <div className="text-center">
-                                <button className="btn btn-default waves-effect waves-light" onSubmit={this.handleSubmit}>Submit</button>
-                            </div>
-                            </div>
-                            </div>
-
-                            </div>
+      <div className="col-md-6 mb-4">
+      { (this.state.errors) ? console.log(this.state.errors) : "" }
+        <div className="card">
+          <div className="card-body">
+            <h3 className="text-center default-text py-3"><i className="fa fa-lock"></i> Login:</h3>
+            <div className="md-form">
+              <i className="fa fa-envelope prefix grey-text"></i>
+              <input type="text" id="username" className="form-control" value={this.state.username} name="username" onChange={this.handleChange}/>
+              <label htmlFor="defaultForm-email">Your Username</label>
+            </div>
+            <div className="md-form">
+                <i className="fa fa-lock prefix grey-text"></i>
+                <input type="password" id="password" className="form-control" value={this.state.password} name="password"onChange={this.handleChange}/>
+                <label htmlFor="defaultForm-pass">Your password</label>
+            </div>
+            <div className="text-center">
+                <button className="btn btn-default waves-effect waves-light" onSubmit={this.handleSubmit}>Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
   )
   }
