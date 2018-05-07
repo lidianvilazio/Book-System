@@ -10,6 +10,23 @@ class SignUp extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    console.log("HELLO!!!!")
+    fetch("http://localhost:3000/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: this.state.name,
+        username: this.state.username,
+        password: this.state.password
+      })
+    }).then(r => r.json()).then(console.log)
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
   }
 
   handleChange = (e) => {
@@ -19,7 +36,7 @@ class SignUp extends React.Component {
   }
 
 render(){
-  console.log("username"+this.state.username, "pw"+this.state.password)
+  console.log("username: "+this.state.username, "pw: "+this.state.password, "name: "+this.state.name)
   return(
     <div>
       <form>
