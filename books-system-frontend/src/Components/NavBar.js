@@ -11,13 +11,23 @@ import { NavLink } from 'react-router-dom';
 // }
 
 const NavBar = () => {
+
   return (
     <div className="nav nav-tabs" id="nav-tab" role="tablist">
-      <NavLink className="nav-item nav-link" to="/" exact activeStyle={{background: 'darkblue'}}>Home</NavLink>
-      <NavLink className="nav-item nav-link" to="/books" exact activeStyle={{background: 'darkblue'}}>Books</NavLink>
-      <NavLink className="nav-item nav-link" to="/user" exact activeStyle={{background: 'darkblue'}}>User</NavLink>
-      <NavLink className="nav-item nav-link" to="/login" exact activeStyle={{background: 'darkblue'}}>Log In</NavLink>
-      <NavLink className="nav-item nav-link" to="/signup" exact activeStyle={{background: 'darkblue'}}>SignUp</NavLink>
+
+    {(localStorage.auth) ?
+      <React.Fragment>
+        <NavLink className="nav-item nav-link" to="/" exact activeStyle={{background: "#2BBBAD"}}>Home</NavLink>
+        <NavLink className="nav-item nav-link" to="/books" exact activeStyle={{background: '#2BBBAD'}}>Books</NavLink>
+        <NavLink className="nav-item nav-link" to="/user" exact activeStyle={{background: '#2BBBAD'}}>User</NavLink>
+        <NavLink className="nav-item nav-link" to="/logout" exact activeStyle={{background: '#2BBBAD'}}>Log Out</NavLink>
+      </React.Fragment>
+        :
+        <React.Fragment>
+          <NavLink className="nav-item nav-link" to="/login" exact activeStyle={{background: '#2BBBAD'}}>Log In</NavLink>
+          <NavLink className="nav-item nav-link" to="/signup" exact activeStyle={{background: '#2BBBAD'}}>SignUp</NavLink>
+        </React.Fragment>
+      }
     </div>);
 };
 

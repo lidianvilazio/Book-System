@@ -1,7 +1,6 @@
 import React from 'react'
-
-
-class Login extends React.Component {
+import {Link} from 'react-router-dom';
+import Home from './Home'
 
 
   DEFAULT_STATE = {
@@ -20,7 +19,6 @@ class Login extends React.Component {
   }
 
   doFetch(auth) {
-    console.log("HELLO!!!!")
     fetch("http://localhost:3000/login", {
       headers: {
         "Content-Type": "application/json",
@@ -28,20 +26,16 @@ class Login extends React.Component {
       },
       method: "POST",
       body: JSON.stringify(auth)
-    }).then(r => r.json()).then((json) => {
+    }).then(r => r.json()).then(json => {
         if (json.error) {
           this.setState({ errors: json.error })
         } else {
           this.setState({ ...this.DEFAULT_STATE })
-          this.authSet(json)
+          this.props.authSet(json)
           // this.props.history.push("/")
+          // console.log(this.props.history.location.pathname);
         }
       })
-  }
-
-  authSet = (auth) =>{
-    localStorage.auth = JSON.stringify(auth);
-    this.setState({ auth });
   }
 
   handleChange = (e) => {
@@ -53,6 +47,7 @@ class Login extends React.Component {
 
 
 render(){
+  // console.log(this.props.history.location.pathname);
   return(
       <div className="col-md-6 mb-4">
       { (this.state.errors) ? console.log(this.state.errors) : "" }
@@ -70,7 +65,8 @@ render(){
                 <label htmlFor="defaultForm-pass">Your password</label>
             </div>
             <div className="text-center">
-                <button className="btn btn-default waves-effect waves-light" onSubmit={this.handleSubmit}>Submit</button>
+              <button className="btn btn-default waves-effect waves-light" onClick={this.handleSubmit}>Submit</button>
+
             </div>
           </div>
         </div>
