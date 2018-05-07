@@ -12,12 +12,12 @@ const link = {
 
 const NavBar = () => {
   return (
-    <div className= 'navbar'>
-      <NavLink to="/" exact style={link} activeStyle={{background: 'darkblue'}}>Home</NavLink>
-      <NavLink to="/books" exact style={link} activ activeStyle={{background: 'darkblue'}}>Books</NavLink>
-      <NavLink to="/user" exact style={link} activ activeStyle={{background: 'darkblue'}}>User</NavLink>
-      <NavLink to="/login" exact style={link} activ activeStyle={{background: 'darkblue'}}>Log In</NavLink>
-      <NavLink to="/signup" exact style={link} activ activeStyle={{background: 'darkblue'}}>SignUp</NavLink>
+    <div className="nav nav-tabs" id="nav-tab" role="tablist">
+      <NavLink className="nav-item nav-link" to="/" exact activeStyle={{background: 'darkblue'}}>Home</NavLink>
+      <NavLink className="nav-item nav-link" to="/books" exact activeStyle={{background: 'darkblue'}}>Books</NavLink>
+      <NavLink className="nav-item nav-link" to="/user" exact activeStyle={{background: 'darkblue'}}>User</NavLink>
+      <NavLink className="nav-item nav-link" to="/login" exact activeStyle={{background: 'darkblue'}}>Log In</NavLink>
+      <NavLink className="nav-item nav-link" to="/signup" exact activeStyle={{background: 'darkblue'}}>SignUp</NavLink>
     </div>);
 };
 

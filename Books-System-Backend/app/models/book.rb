@@ -21,7 +21,7 @@ class Book < ApplicationRecord
           description = i['volumeInfo']['description']
           pageCount = i['volumeInfo']['pageCount']
           categories = i['volumeInfo']['categories']
-          imageLinks = i['volumeInfo']['imageLinks']
+          imageLinks = i['volumeInfo']['imageLinks']['thumbnail']
           language = i['volumeInfo']['language']
           i['volumeInfo'].each do |k1, v1|
             if k1 == 'authors' || k1 == 'author'

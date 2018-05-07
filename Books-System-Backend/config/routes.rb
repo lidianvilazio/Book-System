@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+
+  post '/login', to: "sessions#create", as: "login"
   namespace :api do
     namespace :v1 do
       resources :user_books

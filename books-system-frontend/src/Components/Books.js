@@ -21,9 +21,9 @@ class Books extends React.Component {
   }
 
   render() {
-    console.log(this.state.allBooks);
+
     const books = this.state.allBooks.map(book => {
-      return <p>{book.title}</p>
+      return <div><p>{book.title}</p> <img src={book.imageLinks}/></div>
     })
     return(
       <div>
