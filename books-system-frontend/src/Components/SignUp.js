@@ -34,17 +34,7 @@ class SignUp extends React.Component {
       [e.target.id]: e.target.value
     })
   }
-  // <div>
-  // <form>
-  // Name:
-  // <input id="name" type="text" value={this.state.name} name="name" onChange={this.handleChange} />
-  // Username:
-  // <input id="username" type="text" value={this.state.username} name="username" onChange={this.handleChange} />
-  // Password:
-  // <input id="password"type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-  // <input type="submit" onSubmit={this.handleSubmit} value="Submit" />
-  // </form>
-  // </div>
+  
 
 render(){
   return(
@@ -63,7 +53,7 @@ render(){
               <label htmlFor="defaultForm-pass">Your password</label>
             </div>
             <div className="text-center">
-              <button className="btn btn-default waves-effect waves-light" onSubmit={this.handleSubmit}>Submit</button>
+              <button className="btn btn-default waves-effect waves-light" onClick={this.handleSubmit}>Submit</button>
             </div>
           </div>
         </div>

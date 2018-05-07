@@ -1,20 +1,8 @@
 import React from 'react'
-//HELLO
+
 
 class Login extends React.Component {
 
-  // <form  id="quick-login" role="form" class="form col-md-12 center-block">
-  // <div className="form-group">
-  // <label for="Username" className="control-label">Username</label>
-  // <input id="username" type="text" value={this.state.username} name="username" onChange={this.handleChange} />
-  // </div>
-
-  // <div class="form-group">
-  // <label for="Password" className="control-label">Password</label>
-  // <input id="password"type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-  // </div>
-  // <button type="submit" className="btn btn-success btn-block" onSubmit={this.handleSubmit} value="Submit">Submit</button>
-  // </form>
 
   DEFAULT_STATE = {
     username: "",
@@ -33,7 +21,7 @@ class Login extends React.Component {
 
   doFetch(auth) {
     console.log("HELLO!!!!")
-    fetch("http://localhost:3000/sessions", {
+    fetch("http://localhost:3000/login", {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/javascript"
