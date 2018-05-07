@@ -9,6 +9,17 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    fetch("http://localhost:3000/sessions", {
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/javascript"
+      },
+      method: "POST",
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    }).then(r => r.json()).then(console.log)
   }
 
   handleChange = (e) => {
