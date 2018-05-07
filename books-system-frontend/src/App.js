@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from './Containers/Main'
-import Welcome from './Containers/Welcome'
 import { withRouter } from 'react-router-dom'
 
 class App extends Component {
@@ -12,7 +11,6 @@ class App extends Component {
 
   componentDidMount() {
    if (localStorage.auth) {
-     console.log("local", localStorage);
      const auth = JSON.parse(localStorage.auth)
      this.setState({ auth: auth });
    }
@@ -29,10 +27,9 @@ class App extends Component {
  }
 
   render() {
-    console.log("App", this.state.auth);
     return (
       <div className="App container-fluid">
-        {this.state.auth !== null ? <Main logout={this.logout}/> : <Welcome authSet={this.authSet}/>}
+        <Main authSet={this.authSet} logout={this.logout} auth={this.auth}/>
       </div>
     );
   }

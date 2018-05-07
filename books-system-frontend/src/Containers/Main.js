@@ -7,6 +7,8 @@ import {
   Route
 } from 'react-router-dom';
 import NavBar from '../Components/NavBar';
+import Login from '../Components/Login';
+import SignUp from '../Components/SignUp';
 
 class Main extends React.Component {
 
@@ -21,10 +23,11 @@ class Main extends React.Component {
       <NavBar/>
       <Route exact path="/" component={Home} />
       <Route exact path="/books" component={Books} />
-      <Route exact path="/user" component={User} />
+      <Route exact path="/user" render={ renderProps => <User auth={this.props.auth}/>} />
       <Route exact path="/logout" render={renderProps => <Logout history={renderProps.history} logout={this.props.logout}/> }/>
+      <Route exact path="/login" render={renderProps => <Login authSet={this.props.authSet} history={renderProps.history}/> } />
+      <Route exact path="/signup" render={renderProps => <SignUp authSet={this.props.authSet} history={renderProps.history}/> }/>
       </div>
-      <h1 className="App-title">Welcome to React</h1>
       </header>
 
   );

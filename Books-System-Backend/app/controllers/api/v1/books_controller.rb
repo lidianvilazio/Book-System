@@ -6,9 +6,10 @@ class Api::V1::BooksController < ApplicationController
     render json: @books
   end
 
-  # def create
-  #   @book_api = Book.get_api
-  # end
+  def search
+    @book_api = Book.createBook(params[:title])
+    render json: @book_api
+  end
 
   def show
     @book = Book.find(params[:id])

@@ -3,13 +3,19 @@ class Book < ApplicationRecord
   has_many :user_books
   has_many :users, through: :user_books
 
-  def self.get_api
-    api =  RestClient.get("https://www.googleapis.com/books/v1/volumes?q=''")
-    api_hash = JSON.parse(api)
-  end
+  # def self.get_api
+  #   api =  RestClient.get("https://www.googleapis.com/books/v1/volumes?q=''")
+  #   api_hash = JSON.parse(api)
+  # end
 
-  def self.createBook
-    api = self.get_api
+
+  def self.get_api(search_term)
+   api =  RestClient.get("https://www.googleapis.com/books/v1/volumes?q=#{search_term}")
+   api_hash = JSON.parse(api)
+ end
+
+  def self.createBook(search_term= "")
+    api = self.get_api(search_term)
     api.each do |k,v|
       if v.is_a?(Array)
         v.each do |i|

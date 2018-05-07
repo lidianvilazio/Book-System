@@ -3,19 +3,14 @@ import React from 'react'
 
 class Search extends React.Component {
 
-  state = {
-    title: ''
-  }
-
   handleChange = e => {
-    this.setState({title: e.target.value})
+    this.props.setTitle(e.target.value)
   }
 
   render() {
-
-    console.log(this.state.title);
     return (<div>
-      <input type='text' name='title' onChange={this.handleChange} value={this.state.title}/>
+      <input type='text' name='title' onChange={this.handleChange}/>
+      <div><button className="btn btn-default waves-effect waves-light" onClick={this.props.handleSubmit}>Search</button></div>
       </div>)
 
   }
