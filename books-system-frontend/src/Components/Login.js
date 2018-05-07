@@ -1,20 +1,8 @@
 import React from 'react'
-//HELLO
+import {Link} from 'react-router-dom';
+import Home from './Home'
 
 class Login extends React.Component {
-
-  // <form  id="quick-login" role="form" class="form col-md-12 center-block">
-  // <div className="form-group">
-  // <label for="Username" className="control-label">Username</label>
-  // <input id="username" type="text" value={this.state.username} name="username" onChange={this.handleChange} />
-  // </div>
-
-  // <div class="form-group">
-  // <label for="Password" className="control-label">Password</label>
-  // <input id="password"type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-  // </div>
-  // <button type="submit" className="btn btn-success btn-block" onSubmit={this.handleSubmit} value="Submit">Submit</button>
-  // </form>
 
   DEFAULT_STATE = {
     username: "",
@@ -32,28 +20,23 @@ class Login extends React.Component {
   }
 
   doFetch(auth) {
-    console.log("HELLO!!!!")
-    fetch("http://localhost:3000/sessions", {
+    fetch("http://localhost:3000/login", {
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/javascript"
       },
       method: "POST",
       body: JSON.stringify(auth)
-    }).then(r => r.json()).then((json) => {
+    }).then(r => r.json()).then(json => {
         if (json.error) {
           this.setState({ errors: json.error })
         } else {
           this.setState({ ...this.DEFAULT_STATE })
-          this.authSet(json)
+          this.props.authSet(json)
           // this.props.history.push("/")
+          // console.log(this.props.history.location.pathname);
         }
       })
-  }
-
-  authSet = (auth) =>{
-    localStorage.auth = JSON.stringify(auth);
-    this.setState({ auth });
   }
 
   handleChange = (e) => {
@@ -65,6 +48,7 @@ class Login extends React.Component {
 
 
 render(){
+  // console.log(this.props.history.location.pathname);
   return(
       <div className="col-md-6 mb-4">
       { (this.state.errors) ? console.log(this.state.errors) : "" }
@@ -82,7 +66,8 @@ render(){
                 <label htmlFor="defaultForm-pass">Your password</label>
             </div>
             <div className="text-center">
-                <button className="btn btn-default waves-effect waves-light" onSubmit={this.handleSubmit}>Submit</button>
+              <button className="btn btn-default waves-effect waves-light" onClick={this.handleSubmit}>Submit</button>
+
             </div>
           </div>
         </div>
