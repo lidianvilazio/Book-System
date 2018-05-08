@@ -1,6 +1,7 @@
 import React from 'react'
 import Search from './Search'
 // import {debounce} from 'debounce';
+import BookBrowser from './BookBrowser'
 
 
 const url = "http://localhost:3000/api/v1/books"
@@ -22,6 +23,13 @@ class Books extends React.Component {
   componentDidMount() {
     this.fetchBooks()
   }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log('did',prevProps);
+  //   if(prevProps.length > this.state.allBooks) {
+  //     console.log(this.state.allBooks);
+  //   }
+  // }
 
   // search = title => {
   //   const books = this.state.allBooks.filter(book => book.title.toLowerCase().includes(this.state.title));
@@ -45,7 +53,10 @@ class Books extends React.Component {
       },
       method: "POST",
       body: JSON.stringify({title: this.state.title})
-    }).then(r => r.json()).then(json => this.setState({allBooks: json}))
+    }).then(r => r.json()).then(json => this.setState({
+      allBooks: json,
+      // title: ''
+    }))
   }
 
 
@@ -54,14 +65,14 @@ class Books extends React.Component {
 
     // const books = this.state.allBooks.filter(book => book.title.toLowerCase().includes(this.state.title));
 
-    const b = this.state.allBooks.map(book => {
-      return <div key={book.id}><h1>{book.title}</h1> <img src={book.imageLinks} alt="book's cover" /></div>
-    })
+    // const b = this.state.allBooks.map(book => {
+    //   return <div key={book.id}><h1>{book.title}</h1> <img src={book.imageLinks} alt="book's cover" /></div>
+    // })
     return(
       <div>
         <h2>Books</h2>
-        <Search setTitle={this.setTitle} handleSubmit={this.handleSubmit}/>
-        {b}
+        <Search setTitle={this.setTitle} handleSubmit={this.handleSubmit} title={this.state.title}/>
+        <BookBrowser books={this.state.allBooks} title={this.state.title}/>
       </div>
     )
   }
