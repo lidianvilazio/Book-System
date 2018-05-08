@@ -2,6 +2,14 @@ import React from "react";
 
 const SingleBook = props => {
   let { book, back } = props;
+  console.log(typeof book.author)
+  let author
+  if (book.author){
+    author = book.author.replace('[',' ').replace(']',' ')
+  } else {
+    author = "Unknown"
+  }
+
 
   return (
     <div className="ui segment">
@@ -16,13 +24,28 @@ const SingleBook = props => {
           </div>
           <div className="four wide column">
             <h2>Name: {book.title}</h2>
+            <h2> {book.subtitle}</h2>
             <p>
-              <strong>Catchphrase: </strong>
-              {}
+              <strong>Author(s): </strong>
+              {author}
             </p>
-            <strong>
-              Class: {} {}
-            </strong>
+            <p>
+              <strong>Description: </strong>
+              {book.description}
+            </p>
+            <p>
+              <strong>Page Count: </strong>
+              {book.pageCount}
+            </p>
+            <p>
+              <strong>Publisher: </strong>
+              {book.publisher}
+            </p>
+            <p>
+              <strong>Published Date: </strong>
+              {book.publishedDate}
+            </p>
+
             <br />
             <div className="ui segment">
               <div className="ui three column centered grid">
