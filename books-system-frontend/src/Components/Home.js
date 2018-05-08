@@ -42,7 +42,6 @@ class Home extends React.Component{
 
 
   render() {
-
     const b = this.state.books.map(book => {
       return <div><BookCard key={book.id} book={book} handleClick={this.handleClick}/></div>
     })

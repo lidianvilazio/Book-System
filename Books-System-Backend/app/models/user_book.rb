@@ -2,11 +2,15 @@ class UserBook < ApplicationRecord
   belongs_to :user
   belongs_to :book
 
-  def self.allBooks(books)
-    book = books.map do |i|
-        Book.where(id: i.book_id)[0]
-    end
-    return book
+  def self.allBooks(user_book=UserBook.all)
+
+    user_book.select{|user_book| user_book.avalible}.map { |user_book| user_book.book}
+
   end
+
+  def self.userBook(user_book)
+    user_book.map { |user_book| user_book.book}
+  end
+
 
 end

@@ -1,9 +1,7 @@
 class Api::V1::UserBooksController < ApplicationController
 
   def index
-    @user_books = UserBook.all
-    @allBooks = UserBook.allBooks(@user_books)
-    puts @allBooks
+    @allBooks = UserBook.allBooks
     render json: @allBooks
   end
 
@@ -20,7 +18,8 @@ class Api::V1::UserBooksController < ApplicationController
 
   def show
     @user_books = UserBook.where(user_id: params[:id])
-    @allBooks = UserBook.allBooks(@user_books)
+    puts @user_books
+    @allBooks = UserBook.userBook(@user_books)
     render json: @allBooks
   end
 
