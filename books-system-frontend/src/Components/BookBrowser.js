@@ -1,25 +1,42 @@
 import React from 'react'
+import BookCard from './BookCard'
+import SingleBook from './SingleBook'
 
 class BookBrowser extends React.Component {
 
+  state = {
+    books: [],
+    selectedBook: null
+  }
+
+  componentDidMount() {
+    this.setState({books: this.props.books})
+  }
+
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.books.length < this.props.length) {
-      console.log('did',prevProps);
+    if(prevProps.books.length < this.props.books.length) {
+      this.setState({books: this.props.books})
     }
+  }
+
+  handleClick = (book) => {
+    this.setState({selectedBook: book})
   }
 
   render() {
 
-    console.log(this.props.books);
-    const books = this.props.books.filter(book => book.title.toLowerCase().includes(this.props.title));
+    console.log(this.state.books);
+    const books = this.state.books.filter(book => book.title.toLowerCase().includes(this.props.title));
 
     const b = books.map(book => {
-      return <div key={book.id}><h1>{book.title}</h1> <img src={book.imageLinks} alt="book's cover" /></div>
+      return <div><BookCard key={book.id} book={book} handleClick={this.handleClick}/></div>
     })
     return (
-      <div>{b}</div>
+      <div>{this.state.selectedBook !== null ? <SingleBook book={this.state.selectedBook}/> : b}</div>
     )
   }
 }
+
+
 
 export default BookBrowser;
