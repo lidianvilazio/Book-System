@@ -23,6 +23,10 @@ class BookBrowser extends React.Component {
     this.setState({selectedBook: book})
   }
 
+  back = () => {
+    this.setState({selectedBook: null})
+  }
+
   render() {
 
     console.log(this.state.books);
@@ -32,7 +36,7 @@ class BookBrowser extends React.Component {
       return <div><BookCard key={book.id} book={book} handleClick={this.handleClick}/></div>
     })
     return (
-      <div>{this.state.selectedBook !== null ? <SingleBook book={this.state.selectedBook}/> : b}</div>
+      <div>{this.state.selectedBook !== null ? <SingleBook book={this.state.selectedBook} back={this.back}/> : b}</div>
     )
   }
 }

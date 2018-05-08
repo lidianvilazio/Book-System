@@ -1,9 +1,7 @@
 import React from "react";
 
 const SingleBook = props => {
-  let { book } = props;
-
-  let botType;
+  let { book, back } = props;
 
   return (
     <div className="ui segment">
@@ -47,7 +45,7 @@ const SingleBook = props => {
             <button
               className="btn btn-default waves-effect waves-light"
               onClick={() =>
-                console.log('connect this to a function that shows all bots')
+                back()
               }
             >
               Go Back
@@ -60,7 +58,7 @@ const SingleBook = props => {
                 )
               }
             >
-              Enlist
+              Get Book
             </button>
           </div>
         </div>
