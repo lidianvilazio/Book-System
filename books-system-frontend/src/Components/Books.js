@@ -62,12 +62,6 @@ class Books extends React.Component {
 
 
   render() {
-
-    // const books = this.state.allBooks.filter(book => book.title.toLowerCase().includes(this.state.title));
-
-    // const b = this.state.allBooks.map(book => {
-    //   return <div key={book.id}><h1>{book.title}</h1> <img src={book.imageLinks} alt="book's cover" /></div>
-    // })
     return(
       <div>
         <h2>Books</h2>

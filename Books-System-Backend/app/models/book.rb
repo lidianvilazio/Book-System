@@ -8,8 +8,8 @@ class Book < ApplicationRecord
     api_hash = JSON.parse(api)
   end
 
-  def self.createBook
-    api = self.get_api
+  def self.createBook(search_term="")
+    api = self.get_api(search_term)
     api.each do |k,v|
       if v.is_a?(Array)
         v.each do |i|

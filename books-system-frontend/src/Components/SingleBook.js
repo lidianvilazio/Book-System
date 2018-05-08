@@ -1,8 +1,7 @@
 import React from "react";
 
 const SingleBook = props => {
-  let { book, back } = props;
-  console.log(typeof book.author)
+  let { book, back, postUserBook } = props;
   let author
   if (book.author){
     author = book.author.replace('[',' ').replace(']',' ')
@@ -75,10 +74,10 @@ const SingleBook = props => {
             </button>
             <button
               className="btn btn-default waves-effect waves-light"
-              onClick={() =>
-                console.log(
-                  "connect this to a function that adds this bot to your bot army list"
-                )
+              onClick={() => {
+                postUserBook(book)
+                back()
+              }
               }
             >
               Get Book

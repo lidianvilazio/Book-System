@@ -7,7 +7,6 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def search
-    puts params[:title]
     @book_api = Book.createBook(params[:title])
     @books = Book.all
     render json: @books
