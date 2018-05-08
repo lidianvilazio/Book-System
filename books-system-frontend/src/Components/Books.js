@@ -17,38 +17,44 @@ class Books extends React.Component {
     fetch(url)
     .then(r => r.json())
     .then(json => this.setState({allBooks: json}))
-    // fetch(url, {
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Accept": "application/javascript"
-    //   },
-    //   method: "POST",
-    //   body: JSON.stringify()
-    // }).then(r => r.json()).then(json => this.setState({allBooks: json}))
   }
 
   componentDidMount() {
-    this.fetchBooks('')
+    this.fetchBooks()
   }
 
-  fetchSearch = title => {
-
-  }
+  // search = title => {
+  //   const books = this.state.allBooks.filter(book => book.title.toLowerCase().includes(this.state.title));
+  //   return books
+  // }
 
   // setTitle = debounce(title => {
   //   this.setState({title: title})
   // }, 1000)
 
+  setTitle = title => {
+    this.setState({title: title})
+  }
+
+
   handleSubmit = () => {
-    console.log(":)");
+    fetch('http://localhost:3000/api/v1/search', {
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/javascript"
+      },
+      method: "POST",
+      body: JSON.stringify({title: this.state.title})
+    }).then(r => r.json()).then(json => this.setState({allBooks: json}))
   }
 
 
 
   render() {
-    const books = this.state.allBooks.filter(book => book.title.toLowerCase().includes(this.state.title));
 
-    const b = books.map(book => {
+    // const books = this.state.allBooks.filter(book => book.title.toLowerCase().includes(this.state.title));
+
+    const b = this.state.allBooks.map(book => {
       return <div key={book.id}><h1>{book.title}</h1> <img src={book.imageLinks} alt="book's cover" /></div>
     })
     return(

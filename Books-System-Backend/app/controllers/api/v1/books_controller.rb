@@ -7,8 +7,10 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def search
+    puts params[:title]
     @book_api = Book.createBook(params[:title])
-    render json: @book_api
+    @books = Book.all
+    render json: @books
   end
 
   def show
@@ -20,7 +22,7 @@ class Api::V1::BooksController < ApplicationController
   private
 
   def books_params
-    params.permit(:title, :author)
+    params.permit(:id,:title, :author)
   end
 
 
