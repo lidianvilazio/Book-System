@@ -47,23 +47,13 @@
 .darken-grey-text {
     color: #2E2E2E;
 }
-
+.danger-text {
+    color: #ff3547; }
 .default-text {
     color: #2BBBAD;
 }
-
-.form-white input[type=text]:focus:not([readonly]) + label{
- color: #fff;
- opacity: 0
-}
-.form-white input[type=password]:focus:not([readonly]) + label{
-    color: #fff;
-    opacity: 0
-}
-
-.form-white textarea.md-textarea:focus:not([readonly]) {
-    color: #fff;
-    opacity: 0
+.info-text {
+    color: #33b5e5;
 }
 
 /* @keyframes App-logo-spin {

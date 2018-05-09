@@ -55,13 +55,12 @@ render(){
             <h3 className="text-center default-text py-3"><i className="fa fa-lock "></i> Login:</h3>
             <div className="md-form">
               <i className="fa fa-user prefix grey-text"></i>
-              <input type="text" id="username" className="form-control" value={this.state.username} name="username" onChange={this.handleChange}/>
-              <label>Your Username</label>
+              <input type="text" id="inputLGEx" className="form-control" value={this.state.username} name="username" onChange={this.handleChange} placeholder="Your Username" />
+
             </div>
             <div className="md-form">
                 <i className="fa fa-lock prefix grey-text"></i>
-                <input type="password" id="password" className="form-control" value={this.state.password} name="password"onChange={this.handleChange}/>
-                <label>Your password</label>
+                <input type="password" id="defaultForm-pass" className="form-control" value={this.state.password} name="password"onChange={this.handleChange}placeholder='Your Password'/>
             </div>
             <div className="text-center">
               <button className="btn btn-default waves-effect waves-light" onClick={this.handleSubmit}>Submit</button>
