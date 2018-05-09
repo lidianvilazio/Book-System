@@ -12,8 +12,6 @@ import SignUp from '../Components/SignUp';
 
 class Main extends React.Component {
 
-// flex-xl-nowrap
-// className='row'
 
 
   render() {

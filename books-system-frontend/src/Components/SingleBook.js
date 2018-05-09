@@ -1,7 +1,7 @@
 import React from "react";
 
 const SingleBook = props => {
-  let { book, back, postUserBook } = props;
+  let { book, back, postUserBook, button } = props;
   let author
   if (book.author){
     author = book.author.replace('[',' ').replace(']',' ')
@@ -80,7 +80,7 @@ const SingleBook = props => {
               }
               }
             >
-              Get Book
+              {button}
             </button>
           </div>
         </div>

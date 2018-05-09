@@ -8,6 +8,7 @@ class Search extends React.Component {
   }
 
   render() {
+    console.log("search");
     return (<div>
       <input type='text' name='title' onChange={this.handleChange} value={this.props.title}/>
       <div><button className="btn btn-default waves-effect waves-light" onClick={this.props.handleSubmit}>Search</button></div>

@@ -9,7 +9,8 @@ class User extends React.Component {
   state = {
     auth: '',
     myBooks: [],
-    selectedBook: null
+    selectedBook: null,
+    button: 'Post Book'
   }
 
   componentDidMount() {
@@ -18,7 +19,6 @@ class User extends React.Component {
   }
 
   fetchUserBooks = () => {
-    console.log(this.state.auth.id)
     fetch('http://localhost:3000/api/v1/user_books/'+this.state.auth.id).then(r=>r.json()).then(json=> this.setState({myBooks: json}))
   }
 
@@ -30,8 +30,16 @@ class User extends React.Component {
     this.setState({selectedBook: null})
   }
 
-  postUserBook = () => {
-    console.log(":)");
+  postUserBook = (book) => {
+    const user = JSON.parse(localStorage.auth)
+    fetch('http://localhost:3000/api/v1/user_books/'+book.id, {
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/javascript"
+      },
+      method: "PATCH",
+      body: JSON.stringify({avalible: true, user_id: user.id})
+    }, () => {this.fetchBooks()})
   }
 
 
@@ -47,7 +55,7 @@ class User extends React.Component {
         <p>{this.state.auth.username}</p>
         <div className="ui four column grid">
       		<div className="row">
-          {this.state.selectedBook !== null ? <SingleBook book={this.state.selectedBook} back={this.back} postUserBook={this.postUserBook}/> : b}
+          {this.state.selectedBook !== null ? <SingleBook book={this.state.selectedBook} button={this.state.button}back={this.back} postUserBook={this.postUserBook}/> : b}
       		</div>
     	  </div>
       </div>

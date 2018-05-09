@@ -12,7 +12,7 @@ class Api::V1::UserBooksController < ApplicationController
 
 
   def create
-    @user_book = UserBook.create(book_id: params[:book_id], user_id: params[:user_id])
+    @user_book = UserBook.find_or_create_by(book_id: params[:book_id], user_id: params[:user_id])
     render json: @user_book
   end
 
@@ -23,9 +23,4 @@ class Api::V1::UserBooksController < ApplicationController
     render json: @allBooks
   end
 
-  private
-
-  # def user_books_params
-  #   params.permit(:user,:book)
-  # end
 end

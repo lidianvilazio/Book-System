@@ -14,7 +14,6 @@ class Api::V1::BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
-    # @book_api = Book.get_api
     render json: @book
   end
 

@@ -5,12 +5,9 @@ import SingleBook from './SingleBook'
 class BookBrowser extends React.Component {
 
   state = {
-    books: [],
-    selectedBook: null
-  }
-
-  componentDidMount() {
-    this.setState({books: this.props.books})
+    books: this.props.books,
+    selectedBook: null,
+    button: 'Get Book'
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -40,6 +37,7 @@ class BookBrowser extends React.Component {
   }
 
   render() {
+    console.log("browser", this.props.books);
     const books = this.state.books.filter(book => book.title.toLowerCase().includes(this.props.title));
 
     const b = books.map(book => {
@@ -48,7 +46,7 @@ class BookBrowser extends React.Component {
     return (
       <div className="ui four column grid">
     		<div className="row">
-        {this.state.selectedBook !== null ? <SingleBook book={this.state.selectedBook} back={this.back} postUserBook={this.postUserBook}/> : b}
+        {this.state.selectedBook !== null ? <SingleBook book={this.state.selectedBook} button={this.state.button}back={this.back} postUserBook={this.postUserBook}/> : b}
     		</div>
   	  </div>
     )

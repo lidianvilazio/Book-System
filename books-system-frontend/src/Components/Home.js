@@ -5,7 +5,8 @@ import SingleBook from './SingleBook'
 class Home extends React.Component{
   state = {
     books: [],
-    selectedBook: null
+    selectedBook: null,
+    button: "Get book"
   }
 
   componentDidMount() {
@@ -28,7 +29,6 @@ class Home extends React.Component{
   }
 
   postUserBook = (book) => {
-    console.log(book.id);
     const user = JSON.parse(localStorage.auth)
     fetch('http://localhost:3000/api/v1/user_books/'+book.id, {
       headers: {
@@ -51,7 +51,7 @@ class Home extends React.Component{
         <h2>Home</h2>
         <div className="ui four column grid">
       		<div className="row">
-          {this.state.selectedBook !== null ? <SingleBook book={this.state.selectedBook} back={this.back} postUserBook={this.postUserBook}/> : b}
+          {this.state.selectedBook !== null ? <SingleBook button={this.state.button} book={this.state.selectedBook} back={this.back} postUserBook={this.postUserBook}/> : b}
       		</div>
     	  </div>
       </div>

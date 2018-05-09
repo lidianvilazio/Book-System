@@ -13,6 +13,7 @@ class Book < ApplicationRecord
     api.each do |k,v|
       if v.is_a?(Array)
         v.each do |i|
+          id = i['id']
           title = i['volumeInfo']['title']
           subtitle = i['volumeInfo']['subtitle']
           author = nil
@@ -28,8 +29,7 @@ class Book < ApplicationRecord
               author = v1
             end
           end
-
-          Book.create({author: author, title: title, subtitle: subtitle, publisher: publisher, publishedDate: publishedDate, description: description, pageCount: pageCount, categories: categories, imageLinks: imageLinks, language: language})
+          Book.find_by(id: id) ? nil : Book.create(id: id, author: author, title: title, subtitle: subtitle, publisher: publisher, publishedDate: publishedDate, description: description, pageCount: pageCount, categories: categories, imageLinks: imageLinks, language: language)
         end
       end
     end

@@ -47,7 +47,6 @@ class Login extends React.Component{
 
 
 render(){
-  // console.log(this.props.history.location.pathname);
   return(
       <div className="col-md-6 mb-4">
       { (this.state.errors) ? console.log(this.state.errors) : "" }

@@ -13,6 +13,10 @@ class Books extends React.Component {
     title: ''
   }
 
+  componentDidMount() {
+    console.log("did mount");
+    this.fetchBooks()
+  }
 
   fetchBooks = title => {
     fetch(url)
@@ -20,25 +24,6 @@ class Books extends React.Component {
     .then(json => this.setState({allBooks: json}))
   }
 
-  componentDidMount() {
-    this.fetchBooks()
-  }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('did',prevProps);
-  //   if(prevProps.length > this.state.allBooks) {
-  //     console.log(this.state.allBooks);
-  //   }
-  // }
-
-  // search = title => {
-  //   const books = this.state.allBooks.filter(book => book.title.toLowerCase().includes(this.state.title));
-  //   return books
-  // }
-
-  // setTitle = debounce(title => {
-  //   this.setState({title: title})
-  // }, 1000)
 
   setTitle = title => {
     this.setState({title: title})
@@ -54,14 +39,12 @@ class Books extends React.Component {
       method: "POST",
       body: JSON.stringify({title: this.state.title})
     }).then(r => r.json()).then(json => this.setState({
-      allBooks: json,
-      // title: ''
+      allBooks: json
     }))
   }
 
-
-
   render() {
+    console.log("all books", this.state.allBooks);
     return(
       <div>
         <h2>Books</h2>
