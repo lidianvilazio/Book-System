@@ -16,9 +16,12 @@ class Main extends React.Component {
 
   render() {
     return (
+      <div>
       <header className="App-header">
-      <div >
+      <div>
       <NavBar/>
+      </div>
+      </header>
       <Route exact path="/" component={Home} />
       <Route exact path="/books" component={Books} />
       <Route exact path="/user" render={ renderProps => <User auth={this.props.auth}/>} />
@@ -26,7 +29,6 @@ class Main extends React.Component {
       <Route exact path="/login" render={renderProps => <Login authSet={this.props.authSet} history={renderProps.history}/> } />
       <Route exact path="/signup" render={renderProps => <SignUp authSet={this.props.authSet} history={renderProps.history}/> }/>
       </div>
-      </header>
 
   );
 }

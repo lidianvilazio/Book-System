@@ -48,20 +48,20 @@ class Login extends React.Component{
 
 render(){
   return(
-      <div className="col-md-6 mb-4">
+      <div className=" form-white col-md-6 mb-4 mx-auto ">
       { (this.state.errors) ? console.log(this.state.errors) : "" }
         <div className="card">
           <div className="card-body">
-            <h3 className="text-center default-text py-3"><i className="fa fa-lock"></i> Login:</h3>
+            <h3 className="text-center default-text py-3"><i className="fa fa-lock "></i> Login:</h3>
             <div className="md-form">
-              <i className="fa fa-envelope prefix grey-text"></i>
+              <i className="fa fa-user prefix grey-text"></i>
               <input type="text" id="username" className="form-control" value={this.state.username} name="username" onChange={this.handleChange}/>
-              <label htmlFor="defaultForm-email">Your Username</label>
+              <label>Your Username</label>
             </div>
             <div className="md-form">
                 <i className="fa fa-lock prefix grey-text"></i>
                 <input type="password" id="password" className="form-control" value={this.state.password} name="password"onChange={this.handleChange}/>
-                <label htmlFor="defaultForm-pass">Your password</label>
+                <label>Your password</label>
             </div>
             <div className="text-center">
               <button className="btn btn-default waves-effect waves-light" onClick={this.handleSubmit}>Submit</button>
