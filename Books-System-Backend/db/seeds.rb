@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-user1 = User.create({name: 'user1', username: 'username1', password: '12345'})
+# user1 = User.create({name: 'user1', username: 'username1', password: '12345'})
 
 # book1 = Book.create({author: 'author1', title: 'Book1'})
-Book.createBook
+
 
 # relation1 = UserBook.create({user: user1, book: book1})
