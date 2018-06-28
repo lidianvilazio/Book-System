@@ -38,7 +38,7 @@ class BookBrowser extends React.Component {
   }
 
   render() {
-    console.log("browser", this.props.books);
+    
     const books = this.state.books.filter(book => book.title.toLowerCase().includes(this.props.title));
 
     const b = books.map(book => {

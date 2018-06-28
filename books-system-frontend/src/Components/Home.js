@@ -13,6 +13,7 @@ class Home extends React.Component{
     this.fetchBooks()
   }
 
+
   fetchBooks = () => {
     fetch('http://localhost:3000/api/v1/user_books')
     .then(r => r.json())
@@ -25,7 +26,7 @@ class Home extends React.Component{
   }
 
   back = () => {
-    this.setState({selectedBook: null})
+    this.setState({selectedBook: null}, () => {this.fetchBooks()})
   }
 
   postUserBook = (book) => {
@@ -42,6 +43,8 @@ class Home extends React.Component{
 
 
   render() {
+
+    
     const b = this.state.books.map(book => {
       return <div><BookCard key={book.id} book={book} handleClick={this.handleClick}/></div>
     })
@@ -51,7 +54,7 @@ class Home extends React.Component{
         <h2>Home</h2>
         <div className="ui four column grid">
       		<div className="row">
-          {this.state.selectedBook !== null ? <SingleBook button={this.state.button} book={this.state.selectedBook} back={this.back} postUserBook={this.postUserBook}/> : b}
+          {this.state.selectedBook !== null ? <SingleBook button={this.state.button} book={this.state.selectedBook} back={this.back} postUserBook={this.postUserBook} fetchBooks={this.fetchBooks}/> : b}
       		</div>
     	  </div>
       </div>

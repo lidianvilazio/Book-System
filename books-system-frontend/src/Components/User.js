@@ -19,15 +19,18 @@ class User extends React.Component {
   }
 
   fetchUserBooks = () => {
-    fetch('http://localhost:3000/api/v1/user_books/'+this.state.auth.id).then(r=>r.json()).then(json=> this.setState({myBooks: json}))
+    fetch('http://localhost:3000/api/v1/user_books/'+this.state.auth.id)
+    .then(r=>r.json())
+    .then(json => this.setState({myBooks: json}))
   }
+  // [...new Set(json.map(item => Object.toJSON(item)))]
 
   handleClick = (book) => {
     this.setState({selectedBook: book})
   }
 
   back = () => {
-    this.setState({selectedBook: null})
+    this.setState({selectedBook: null}, () => this.fetchUserBooks())
   }
 
   postUserBook = (book) => {

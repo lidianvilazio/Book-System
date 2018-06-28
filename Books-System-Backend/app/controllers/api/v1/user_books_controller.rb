@@ -2,7 +2,7 @@ class Api::V1::UserBooksController < ApplicationController
 
   def index
     @allBooks = UserBook.allBooks
-    render json: @allBooks
+    render json: @allBooks.uniq
   end
 
   def update
@@ -20,7 +20,7 @@ class Api::V1::UserBooksController < ApplicationController
     @user_books = UserBook.where(user_id: params[:id])
     puts @user_books
     @allBooks = UserBook.userBook(@user_books)
-    render json: @allBooks
+    render json: @allBooks.uniq
   end
 
 end

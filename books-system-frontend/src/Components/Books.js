@@ -14,7 +14,6 @@ class Books extends React.Component {
   }
 
   componentDidMount() {
-    console.log("did mount");
     this.fetchBooks()
   }
 
