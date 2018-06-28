@@ -10,6 +10,7 @@ class BookBrowser extends React.Component {
     button: 'Get Book'
   }
 
+
   componentDidUpdate(prevProps, prevState) {
     if(prevProps.books.length < this.props.books.length) {
       this.setState({books: this.props.books})

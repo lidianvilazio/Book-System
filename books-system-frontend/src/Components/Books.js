@@ -44,7 +44,7 @@ class Books extends React.Component {
   }
 
   render() {
-    console.log("all books", this.state.allBooks);
+    // console.log("all books", this.state.allBooks);
     return(
       <div>
         <h2>Books</h2>
